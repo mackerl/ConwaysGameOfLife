@@ -6,23 +6,47 @@ import java.util.Map;
 
 public class Visitors {
 
-	private Map<Cell, Visited> visitors = new HashMap<Cell, Visited>();
+	private Map<Cell, Visited> visitorMap = new HashMap<Cell, Visited>();
 
-	public Map<Cell, Visited> getVisitors() {
-		return visitors;
-	}
-
-	public void visit(Cell coordinate) {
-		if (visitors.containsKey(coordinate)) {
-			Visited visited = visitors.get(coordinate);
+	public void visit(Cell cell) {
+		if (visitorMap.containsKey(cell)) {
+			Visited visited = visitorMap.get(cell);
 			visited.visit();
+		} else {
+			Visited visited = new Visited();
+			visited.visit();
+			visitorMap.put(cell, visited);
 		}
 	}
 
-	public void visit(List<Cell> cells) {
+	void visit(List<Cell> cells) {
 		for (Cell cell : cells) {
 			visit(cell);
 		}
 	}
 
+	public void applyRules(CellRuleApplier cellRuleApplier) {
+
+		for (Map.Entry<Cell, Visited> entry : visitorMap.entrySet()) {
+			cellRuleApplier.setCell(entry.getKey());
+			cellRuleApplier.setCellVisited(entry.getValue());
+			cellRuleApplier.applyRulesOnCell();
+		}
+	}
+
+	public Visited get(Cell cell) {
+		return visitorMap.get(cell);
+	}
+
+	public boolean containsKey(Cell cell) {
+		return visitorMap.containsKey(cell);
+	}
+
+	public int size() {
+		return visitorMap.size();
+	}
+
+	public void visit(CellNeighbours cellNeighbours) {
+		visit(cellNeighbours.getNeighbours());
+	}
 }

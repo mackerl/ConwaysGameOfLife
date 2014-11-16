@@ -4,15 +4,15 @@ public class Visited {
 
 	private int amountVisitors = 0;
 
-	void visit() {
+	public void visit() {
 		amountVisitors++;
 	}
 
-	void visit(int amount) {
+	public void visit(int amount) {
 		amountVisitors += amount;
 	}
 
-	int visitors() {
+	public int visitors() {
 		return amountVisitors;
 	}
 

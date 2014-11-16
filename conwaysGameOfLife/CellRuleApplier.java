@@ -1,43 +1,55 @@
 package conwaysGameOfLife;
 
-import java.util.Map;
-
 public class CellRuleApplier {
 
-	private Visitors visitors;
 	private Cells cells;
-	private Cell cell;
-	private Visited visited;
 
-	public void setVisitors(Visitors visitors) {
-		this.visitors = visitors;
+	private Cell cell;
+	private Visited cellVisited;
+
+	public void setCell(Cell cell) {
+		this.cell = cell;
+	}
+
+	public void setCellVisited(Visited cellVisited) {
+		this.cellVisited = cellVisited;
 	}
 
 	public void setCells(Cells cells) {
 		this.cells = cells;
 	}
 
-	public void apply() {
-
-		Map<Cell, Visited> visitor = visitors.getVisitors();
-
-		for (Map.Entry<Cell, Visited> entry : visitor.entrySet()) {
-			cell = entry.getKey();
-			visited = entry.getValue();
-			if (cells.cellAt(cell)) {
-				applyLiveCellRules(visited);
-			}
-			applyDeadCellRules(visited);
+	void applyRulesOnCell() {
+		if (cells.contains(cell)) {
+			applyLiveCellRules();
+		} else {
+			applyDeadCellRules();
 		}
-
 	}
 
-	public void applyLiveCellRules(Visited visited) {
+	public void applyLiveCellRules() {
+		applyOverCrowdingRule();
+		applyUnderPopulationRule();
 	}
 
-	public void applyDeadCellRules(Visited visited) {
+	private void applyUnderPopulationRule() {
+		CellRuleDieOfUnderpopulation dieOfUnderpopulation = new CellRuleDieOfUnderpopulation();
+		if (dieOfUnderpopulation.apply(cellVisited)) {
+			cells.killCell(cell);
+		}
+	}
+
+	private void applyOverCrowdingRule() {
+		CellRuleDieOfOvercrowding dieOfOvercrowding = new CellRuleDieOfOvercrowding();
+
+		if (dieOfOvercrowding.apply(cellVisited)) {
+			cells.killCell(cell);
+		}
+	}
+
+	public void applyDeadCellRules() {
 		CellRuleBornCellFromPopulation borneCellFromPopulationRule = new CellRuleBornCellFromPopulation();
-		if (borneCellFromPopulationRule.apply(visited)) {
+		if (borneCellFromPopulationRule.apply(cellVisited)) {
 			cells.createCell(cell);
 		}
 	}

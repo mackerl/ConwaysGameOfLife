@@ -11,12 +11,12 @@ public class CellNeighbours {
 		return neighbours;
 	}
 
-	public static CellNeighbours create(Cell coordinate) {
+	public static CellNeighbours create(Cell cell) {
 		CellNeighbours coordinateNeighbours = new CellNeighbours();
-		for (int x = coordinate.x - 1; x <= coordinate.x + 1; x++) {
-			for (int y = coordinate.y - 1; y <= coordinate.y + 1; y++) {
+		for (int x = cell.x - 1; x <= cell.x + 1; x++) {
+			for (int y = cell.y - 1; y <= cell.y + 1; y++) {
 				Cell toInsert = new Cell(x, y);
-				if (!toInsert.equals(toInsert)) {
+				if (!toInsert.equals(cell)) {
 					coordinateNeighbours.neighbours.add(toInsert);
 				}
 			}

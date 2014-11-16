@@ -1,10 +1,15 @@
-package conwaysGameOfLife;
+package Tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import conwaysGameOfLife.CellRuleBornCellFromPopulation;
+import conwaysGameOfLife.CellRuleDieOfOvercrowding;
+import conwaysGameOfLife.CellRuleDieOfUnderpopulation;
+import conwaysGameOfLife.Visited;
 
 public class CellRuleTest {
 

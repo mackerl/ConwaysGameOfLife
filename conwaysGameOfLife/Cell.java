@@ -1,6 +1,6 @@
 package conwaysGameOfLife;
 
-public class Cell implements Comparable<Cell> {
+public class Cell {
 
 	public int x;
 	public int y;
@@ -12,22 +12,18 @@ public class Cell implements Comparable<Cell> {
 
 	};
 
-	public boolean equals(Cell toCompare) {
-		if (x == toCompare.x && y == toCompare.y) {
+	@Override
+	public boolean equals(Object other) {
+		Cell theOther = (Cell) other;
+		if (x == theOther.x && y == theOther.y) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public int compareTo(Cell toCompare) {
-		if (equals(toCompare)) {
-			return 0;
-		} else if (x < toCompare.x && y < toCompare.y) {
-			return -1;
-		} else {
-			return 1;
-		}
+	public int hashCode() {
+		return x + y;
 	}
 
 }

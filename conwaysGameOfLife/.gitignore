@@ -23,3 +23,13 @@
 /CellRuleBornCellFromPopulation.class
 /CellRuleLiveOnInIdealPopulation.class
 /CellRuleTest.class
+/SeedGenerator.class
+/ConwaysGameOfLive.class
+/BlinkerSeed.class
+/BlinkerSeedGenerator.class
+/CellRuleApplierTest.class
+/CellNeighboursTest.class
+/CellsTest.class
+/VisitorsTest.class
+/BeaconSeedGenerator.class
+/Universe$exitTask.class
