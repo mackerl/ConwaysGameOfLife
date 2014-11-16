@@ -8,6 +8,10 @@ public class Visited {
 		amountVisitors++;
 	}
 
+	void visit(int amount) {
+		amountVisitors += amount;
+	}
+
 	int visitors() {
 		return amountVisitors;
 	}

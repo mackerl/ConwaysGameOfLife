@@ -15,3 +15,11 @@
 /Universe.class
 /Visited.class
 /Visitors.class
+/CoordinateNeighbours.class
+/CellRuleDieOfOvercrowding.class
+/CellRuleDieOfUnderpopulation.class
+/CellRuleLiveOn.class
+/CellRuleCreate.class
+/CellRuleBornCellFromPopulation.class
+/CellRuleLiveOnInIdealPopulation.class
+/CellRuleTest.class

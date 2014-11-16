@@ -2,7 +2,6 @@ package conwaysGameOfLife;
 
 public interface CellRule {
 
-  public void apply(Visited cellVisited);
-
+	public boolean apply(Visited cellVisited);
 
 }

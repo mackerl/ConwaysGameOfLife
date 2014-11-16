@@ -4,28 +4,31 @@ import java.util.HashSet;
 
 public class Cells {
 
-	private HashSet<Coordinate> cells = new HashSet<Coordinate>();
+	private HashSet<Cell> cells = new HashSet<Cell>();
 
-	public void createCell(Coordinate coordinate) {
+	public void createCell(Cell coordinate) {
 		if (!cells.contains(coordinate)) {
 			cells.add(coordinate);
 		}
 	}
 
-	public void killCell(Coordinate coordinate) {
+	public void killCell(Cell coordinate) {
 		if (cells.contains(coordinate)) {
 			cells.remove(coordinate);
 		}
 	}
 
-	public boolean cellAt(Coordinate coordinates) {
+	public boolean cellAt(Cell coordinates) {
 		return cells.contains(coordinates);
 	}
 
 	public Visitors visitNeighbours() {
 		Visitors visitors = new Visitors();
-		
-		for()
+
+		for (Cell cell : cells) {
+			CellNeighbours cellNeighbours = CellNeighbours.create(cell);
+			visitors.visit(cellNeighbours.getNeighbours());
+		}
 
 		return visitors;
 	}
