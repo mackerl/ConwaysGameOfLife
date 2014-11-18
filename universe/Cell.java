@@ -2,8 +2,8 @@ package universe;
 
 public class Cell {
 
-	public int x;
-	public int y;
+	public int x = 0;
+	public int y = 0;
 
 	public Cell(int x, int y) {
 
@@ -11,6 +11,9 @@ public class Cell {
 		this.y = y;
 
 	};
+
+	public Cell() {
+	}
 
 	@Override
 	public boolean equals(Object other) {
