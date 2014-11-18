@@ -1,4 +1,4 @@
-package tests;
+package rules;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -6,9 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import rules.CellRuleBornCellFromPopulation;
-import rules.CellRuleDieOfOvercrowding;
-import rules.CellRuleDieOfUnderpopulation;
 import universe.Visited;
 
 public class CellRuleTest {

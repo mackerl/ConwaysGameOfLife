@@ -1,4 +1,4 @@
-package tests;
+package universe;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
-
-import universe.Cell;
-import universe.CellNeighbours;
 
 public class CellNeighboursTest {
 

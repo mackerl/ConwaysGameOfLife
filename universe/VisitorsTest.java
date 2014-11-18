@@ -1,14 +1,9 @@
-package tests;
+package universe;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import universe.Cell;
-import universe.CellNeighbours;
-import universe.Visited;
-import universe.Visitors;
 
 public class VisitorsTest {
 

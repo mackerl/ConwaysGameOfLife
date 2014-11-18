@@ -4,3 +4,5 @@
 /CellRuleBornCellFromPopulation.class
 /CellRuleDieOfOvercrowding.class
 /CellRuleDieOfUnderpopulation.class
+/CellRuleApplierTest.class
+/CellRuleTest.class

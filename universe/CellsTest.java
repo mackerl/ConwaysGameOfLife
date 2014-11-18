@@ -1,4 +1,4 @@
-package tests;
+package universe;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,11 +9,6 @@ import org.junit.Test;
 
 import seed.BlinkerSeedGenerator;
 import seed.SeedGenerator;
-import universe.Cell;
-import universe.CellNeighbours;
-import universe.Cells;
-import universe.Visited;
-import universe.Visitors;
 
 public class CellsTest {
 
