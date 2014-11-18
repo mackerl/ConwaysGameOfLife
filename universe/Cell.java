@@ -12,6 +12,13 @@ public class Cell {
 
 	};
 
+	public Cell(int x, int y, int xoff, int yoff) {
+
+		this.x = x + xoff;
+		this.y = y + yoff;
+
+	};
+
 	public Cell() {
 	}
 

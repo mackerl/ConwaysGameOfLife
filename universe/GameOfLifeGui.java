@@ -57,6 +57,6 @@ public class GameOfLifeGui extends JPanel {
 		refreshMinMax();
 		int width = maxCell.y - minCell.y;
 		int heigth = maxCell.x - minCell.x;
-		return new Dimension(width * 4, heigth * 4);
+		return new Dimension(width * cellWitdth, heigth * cellHeight);
 	}
 }
