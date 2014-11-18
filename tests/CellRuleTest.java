@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import conwaysGameOfLife.CellRuleBornCellFromPopulation;
-import conwaysGameOfLife.CellRuleDieOfOvercrowding;
-import conwaysGameOfLife.CellRuleDieOfUnderpopulation;
-import conwaysGameOfLife.Visited;
+import rules.CellRuleBornCellFromPopulation;
+import rules.CellRuleDieOfOvercrowding;
+import rules.CellRuleDieOfUnderpopulation;
+import universe.Visited;
 
 public class CellRuleTest {
 
@@ -22,7 +22,7 @@ public class CellRuleTest {
 		CellRuleBornCellFromPopulation cellRuleBornCellFromPopulation = new CellRuleBornCellFromPopulation();
 
 		// Precondition
-		assertSame(expectedVisitors, cellVisited.visitors());
+		assertSame(expectedVisitors, cellVisited.visits());
 
 		boolean createCell = cellRuleBornCellFromPopulation.apply(cellVisited);
 		assertTrue(createCell);
@@ -38,7 +38,7 @@ public class CellRuleTest {
 		CellRuleDieOfUnderpopulation cellRuleDieOfUnderpopulation = new CellRuleDieOfUnderpopulation();
 
 		// Precondition
-		assertSame(expectedVisitors, cellVisited.visitors());
+		assertSame(expectedVisitors, cellVisited.visits());
 
 		boolean dieOfUnderPopulation = cellRuleDieOfUnderpopulation
 				.apply(cellVisited);
@@ -58,7 +58,7 @@ public class CellRuleTest {
 
 		cellVisited.visit(expectedVisitors);
 		// Precondition
-		assertSame(expectedVisitors, cellVisited.visitors());
+		assertSame(expectedVisitors, cellVisited.visits());
 
 		boolean dieOfOvercrowding = cellRuleDieOfOvercrowding
 				.apply(cellVisited);
@@ -75,7 +75,7 @@ public class CellRuleTest {
 		CellRuleBornCellFromPopulation cellRuleBornCellFromPopulation = new CellRuleBornCellFromPopulation();
 
 		// Precondition
-		assertSame(expectedVisitors, cellVisited.visitors());
+		assertSame(expectedVisitors, cellVisited.visits());
 
 		boolean createCell = cellRuleBornCellFromPopulation.apply(cellVisited);
 		assertFalse(createCell);

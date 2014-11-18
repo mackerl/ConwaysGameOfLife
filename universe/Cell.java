@@ -1,4 +1,4 @@
-package conwaysGameOfLife;
+package universe;
 
 public class Cell {
 

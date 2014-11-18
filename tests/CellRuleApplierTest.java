@@ -1,14 +1,14 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import conwaysGameOfLife.Cell;
-import conwaysGameOfLife.CellRuleApplier;
-import conwaysGameOfLife.Cells;
-import conwaysGameOfLife.Visitors;
+import rules.CellRuleApplier;
+import universe.Cell;
+import universe.Cells;
+import universe.Visitors;
 
 public class CellRuleApplierTest {
 
@@ -23,8 +23,7 @@ public class CellRuleApplierTest {
 
 		assertEquals(12, visitors.size());
 
-		CellRuleApplier cellRuleApplier = new CellRuleApplier();
-		cellRuleApplier.setCells(cells);
+		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
 
 		visitors.applyRules(cellRuleApplier);
 

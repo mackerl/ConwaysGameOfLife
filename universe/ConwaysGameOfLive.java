@@ -1,4 +1,8 @@
-package conwaysGameOfLife;
+package universe;
+
+
+import seed.BlinkerSeedGenerator;
+import seed.SeedGenerator;
 
 public class ConwaysGameOfLive {
 
@@ -8,7 +12,7 @@ public class ConwaysGameOfLive {
 
 		SeedGenerator seedGenerator = new BlinkerSeedGenerator();
 		// seedGenerator = new BeaconSeedGenerator();
-		universe.setSeedGenerator(seedGenerator);
+		universe.addSeedGenerator(seedGenerator);
 
 		universe.start();
 

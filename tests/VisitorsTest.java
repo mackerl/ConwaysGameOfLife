@@ -1,14 +1,14 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import conwaysGameOfLife.Cell;
-import conwaysGameOfLife.CellNeighbours;
-import conwaysGameOfLife.Visited;
-import conwaysGameOfLife.Visitors;
+import universe.Cell;
+import universe.CellNeighbours;
+import universe.Visited;
+import universe.Visitors;
 
 public class VisitorsTest {
 
@@ -23,7 +23,7 @@ public class VisitorsTest {
 
 		Visited visited = visitors.get(cell);
 
-		assertEquals(1, visited.visitors());
+		assertEquals(1, visited.visits());
 	}
 
 	@Test
@@ -39,7 +39,7 @@ public class VisitorsTest {
 			assertTrue(visitors.containsKey(cell1));
 			Visited visited = visitors.get(cell1);
 
-			assertEquals(1, visited.visitors());
+			assertEquals(1, visited.visits());
 		}
 	}
 }

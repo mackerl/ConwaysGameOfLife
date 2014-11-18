@@ -1,8 +1,16 @@
-package conwaysGameOfLife;
+package rules;
+
+import universe.Cell;
+import universe.Cells;
+import universe.Visited;
 
 public class CellRuleApplier {
 
-	private Cells cells;
+	private final Cells cells;
+
+	public CellRuleApplier(Cells cells) {
+		this.cells = cells;
+	}
 
 	private Cell cell;
 	private Visited cellVisited;
@@ -15,11 +23,7 @@ public class CellRuleApplier {
 		this.cellVisited = cellVisited;
 	}
 
-	public void setCells(Cells cells) {
-		this.cells = cells;
-	}
-
-	void applyRulesOnCell() {
+	public void applyRulesOnCell() {
 		if (cells.contains(cell)) {
 			applyLiveCellRules();
 		} else {

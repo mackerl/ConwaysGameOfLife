@@ -5,4 +5,4 @@
  * @author mackerl
  *
  */
-package Tests;
+package universe;

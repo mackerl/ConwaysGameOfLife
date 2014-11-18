@@ -1,8 +1,12 @@
-package conwaysGameOfLife;
+package universe;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import rules.CellRuleApplier;
+import seed.SeedGenerator;
 
 public class Universe {
 
@@ -17,17 +21,15 @@ public class Universe {
 	}
 
 	private final Cells cells = new Cells();
-	private Visitors visitors = null;
-	private final CellRuleApplier cellRuleApplier = new CellRuleApplier();
 
-	private SeedGenerator seedGenerator;
+	private List<SeedGenerator> seedGenerators = new ArrayList<SeedGenerator>();
 
-	public void setSeedGenerator(SeedGenerator seedGenerator) {
-		this.seedGenerator = seedGenerator;
+	public void addSeedGenerator(SeedGenerator seedGenerator) {
+		seedGenerators.add(seedGenerator);
 	}
 
 	public void start() {
-		if (seedGenerator != null) {
+		for (SeedGenerator seedGenerator : seedGenerators) {
 			List<Cell> seed = seedGenerator.generate();
 			cells.createCell(seed);
 		}
@@ -49,7 +51,6 @@ public class Universe {
 	}
 
 	private void tick() {
-		visitNeighbours();
 		applyRules();
 		printUniverse();
 
@@ -60,12 +61,9 @@ public class Universe {
 		System.out.println();
 	}
 
-	private void visitNeighbours() {
-		visitors = cells.visitNeighbours();
-	}
-
 	private void applyRules() {
-		cellRuleApplier.setCells(cells);
+		Visitors visitors = cells.visitNeighbours();
+		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
 		visitors.applyRules(cellRuleApplier);
 	}
 

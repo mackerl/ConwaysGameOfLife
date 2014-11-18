@@ -1,4 +1,4 @@
-package conwaysGameOfLife;
+package universe;
 
 public class Visited {
 
@@ -12,7 +12,7 @@ public class Visited {
 		amountVisitors += amount;
 	}
 
-	public int visitors() {
+	public int visits() {
 		return amountVisitors;
 	}
 

@@ -1,7 +1,9 @@
-package conwaysGameOfLife;
+package seed;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import universe.Cell;
 
 public class BlinkerSeedGenerator implements SeedGenerator {
 

@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,13 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import conwaysGameOfLife.BlinkerSeedGenerator;
-import conwaysGameOfLife.Cell;
-import conwaysGameOfLife.CellNeighbours;
-import conwaysGameOfLife.Cells;
-import conwaysGameOfLife.SeedGenerator;
-import conwaysGameOfLife.Visited;
-import conwaysGameOfLife.Visitors;
+import seed.BlinkerSeedGenerator;
+import seed.SeedGenerator;
+import universe.Cell;
+import universe.CellNeighbours;
+import universe.Cells;
+import universe.Visited;
+import universe.Visitors;
 
 public class CellsTest {
 
@@ -61,7 +61,7 @@ public class CellsTest {
 		for (Cell neighbour : neighbours) {
 			assertTrue(visitors.containsKey(neighbour));
 			Visited visited = visitors.get(neighbour);
-			assertEquals(1, visited.visitors());
+			assertEquals(1, visited.visits());
 		}
 
 	}

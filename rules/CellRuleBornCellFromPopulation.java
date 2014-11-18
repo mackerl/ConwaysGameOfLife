@@ -1,4 +1,6 @@
-package conwaysGameOfLife;
+package rules;
+
+import universe.Visited;
 
 public class CellRuleBornCellFromPopulation implements CellRule {
 
@@ -7,7 +9,7 @@ public class CellRuleBornCellFromPopulation implements CellRule {
 	@Override
 	public boolean apply(Visited cellVisited) {
 
-		if (cellVisited.visitors() == limit) {
+		if (cellVisited.visits() == limit) {
 			return true;
 		}
 		return false;

@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,8 +8,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import conwaysGameOfLife.Cell;
-import conwaysGameOfLife.CellNeighbours;
+import universe.Cell;
+import universe.CellNeighbours;
 
 public class CellNeighboursTest {
 

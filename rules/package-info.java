@@ -5,4 +5,4 @@
  * @author mackerl
  *
  */
-package conwaysGameOfLife;
+package rules;

@@ -1,8 +1,10 @@
-package conwaysGameOfLife;
+package universe;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import rules.CellRuleApplier;
 
 public class Visitors {
 

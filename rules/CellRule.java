@@ -1,4 +1,6 @@
-package conwaysGameOfLife;
+package rules;
+
+import universe.Visited;
 
 public interface CellRule {
 
