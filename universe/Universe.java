@@ -51,6 +51,12 @@ public class Universe extends JFrame implements ActionListener {
 		seedGenerators.add(seedGenerator);
 	}
 
+	public void addSeedGenerator(List<SeedGenerator> seedGenerators) {
+		for (SeedGenerator seedGenerator : seedGenerators) {
+			this.seedGenerators.add(seedGenerator);
+		}
+	}
+
 	public void start() {
 		System.out.println("<<<<<<<<<<<<< Starting my universe <<<<<<<<<<<<<");
 		for (SeedGenerator seedGenerator : seedGenerators) {

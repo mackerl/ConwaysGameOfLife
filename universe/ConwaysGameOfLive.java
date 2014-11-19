@@ -1,9 +1,6 @@
 package universe;
 
-import seed.BlinkerSeedGenerator;
-import seed.BlockSeedGenerator;
-import seed.GliderSeedGenerator;
-import seed.SeedGenerator;
+import seed.SeedFactory;
 
 public class ConwaysGameOfLive {
 
@@ -11,15 +8,9 @@ public class ConwaysGameOfLive {
 
 		Universe universe = new Universe();
 
-		SeedGenerator blinkderSeed = new BlinkerSeedGenerator();
-		SeedGenerator beaconSeed = new BlockSeedGenerator();
-		SeedGenerator gliderGun = new GliderSeedGenerator();
-		universe.addSeedGenerator(blinkderSeed);
-		universe.addSeedGenerator(beaconSeed);
-		universe.addSeedGenerator(gliderGun);
+		universe.addSeedGenerator(SeedFactory.create(100));
 
 		universe.start();
 
 	}
-
 }
