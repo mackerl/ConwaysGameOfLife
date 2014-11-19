@@ -88,4 +88,10 @@ public class Universe extends JFrame implements ActionListener {
 	public void addSeedGenerator(SeedGenerator seedGenerator) {
 		seedGenerators.add(seedGenerator);
 	}
+
+	public void setCellSize(int cellWitdth, int cellHeight) {
+		gameOfLifeGui.setCellWitdth(cellWitdth);
+		gameOfLifeGui.setCellHeight(cellHeight);
+	}
+
 }

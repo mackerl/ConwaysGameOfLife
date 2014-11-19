@@ -7,19 +7,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Cells {
 
-	private Set<Cell> cells = Collections
+	Set<Cell> aliveCells = Collections
 			.newSetFromMap(new ConcurrentHashMap<Cell, Boolean>());
-
-	public int size() {
-		return cells.size();
-	}
-
-	public Cells createCell(Cell cell) {
-		if (!cells.contains(cell)) {
-			cells.add(cell);
-		}
-		return this;
-	}
 
 	public void createCell(List<Cell> cells) {
 		for (Cell cell : cells) {
@@ -27,9 +16,45 @@ public class Cells {
 		}
 	}
 
+	public Cells createCell(Cell cell) {
+		if (!aliveCells.contains(cell)) {
+			aliveCells.add(cell);
+		}
+		return this;
+	}
+
+	public void killCell(Cell cell) {
+		if (aliveCells.contains(cell)) {
+			aliveCells.remove(cell);
+		}
+	}
+
+	public Visitors visitNeighbours() {
+		Visitors visitors = new Visitors(this);
+
+		for (Cell cell : aliveCells) {
+			CellNeighbours cellNeighbours = CellNeighbours.create(cell);
+			visitors.visit(cellNeighbours);
+		}
+
+		return visitors;
+	}
+
+	public int size() {
+		return aliveCells.size();
+	}
+
+	public boolean isEmpty() {
+		return aliveCells.isEmpty();
+	}
+
+	public boolean contains(Cell cell) {
+		return aliveCells.contains(cell);
+	}
+
 	Cell getMax() {
 		Cell maxCell = new Cell();
-		for (Cell cell : cells) {
+		for (Cell cell : aliveCells) {
 			if (cell.x > maxCell.x) {
 				maxCell.x = cell.x;
 			}
@@ -42,7 +67,7 @@ public class Cells {
 
 	Cell getMin() {
 		Cell minCell = new Cell();
-		for (Cell cell : cells) {
+		for (Cell cell : aliveCells) {
 			if (cell.x < minCell.x) {
 				minCell.x = cell.x;
 			}
@@ -53,29 +78,4 @@ public class Cells {
 		return minCell;
 	}
 
-	public void killCell(Cell cell) {
-		if (cells.contains(cell)) {
-			cells.remove(cell);
-		}
-	}
-
-	public boolean contains(Cell cell) {
-		return cells.contains(cell);
-	}
-
-	public Visitors visitNeighbours() {
-		Visitors visitors = new Visitors();
-
-		for (Cell cell : cells) {
-			CellNeighbours cellNeighbours = CellNeighbours.create(cell);
-			visitors.visit(cellNeighbours);
-		}
-		visitors.visitCellsWithoutNeighbours(cells);
-
-		return visitors;
-	}
-
-	public boolean isEmpty() {
-		return cells.isEmpty();
-	}
 }

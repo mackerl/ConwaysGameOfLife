@@ -9,8 +9,9 @@ public class VisitorsTest {
 
 	@Test
 	public void testVisit() {
-		Visitors visitors = new Visitors();
 		Cell cell = new Cell(1, 2);
+
+		Visitors visitors = new Visitors();
 
 		visitors.visit(cell);
 
@@ -23,8 +24,10 @@ public class VisitorsTest {
 
 	@Test
 	public void testGroupVisit() {
-		Visitors visitors = new Visitors();
 		Cell cell = new Cell(1, 2);
+		Cells cells = new Cells();
+		cells.createCell(cell);
+		Visitors visitors = new Visitors(cells);
 
 		CellNeighbours cellNeighbours = CellNeighbours.create(cell);
 

@@ -16,12 +16,9 @@ public class CellRuleApplier {
 	private Cell cell;
 	private Visitables cellVisited;
 
-	public void setCell(Cell cell) {
-		this.cell = cell;
-	}
-
-	public void setCellVisited(Visitables cellVisited) {
-		this.cellVisited = cellVisited;
+	public void applyRules() {
+		Visitors visitors = cells.visitNeighbours();
+		visitors.applyRules(this);
 	}
 
 	public void applyRulesOnCell() {
@@ -59,10 +56,12 @@ public class CellRuleApplier {
 		}
 	}
 
-	public void applyRules() {
-		Visitors visitors = cells.visitNeighbours();
-		visitors.applyRules(this);
+	public void setCell(Cell cell) {
+		this.cell = cell;
+	}
 
+	public void setCellVisited(Visitables cellVisited) {
+		this.cellVisited = cellVisited;
 	}
 
 }

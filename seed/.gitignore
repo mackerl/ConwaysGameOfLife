@@ -5,3 +5,5 @@
 /BlockSeedGenerator.class
 /GliderSeedGenerator.class
 /SeedFactory.class
+/LifFileSeedGenerator.class
+/LifFileReader.class
