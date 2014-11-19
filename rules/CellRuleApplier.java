@@ -3,6 +3,7 @@ package rules;
 import universe.Cell;
 import universe.Cells;
 import universe.Visited;
+import universe.Visitors;
 
 public class CellRuleApplier {
 
@@ -37,14 +38,14 @@ public class CellRuleApplier {
 	}
 
 	private void applyUnderPopulationRule() {
-		CellRuleDieOfUnderpopulation dieOfUnderpopulation = new CellRuleDieOfUnderpopulation();
+		CellRule dieOfUnderpopulation = new CellRuleDieOfUnderpopulation();
 		if (dieOfUnderpopulation.apply(cellVisited)) {
 			cells.killCell(cell);
 		}
 	}
 
 	private void applyOverCrowdingRule() {
-		CellRuleDieOfOvercrowding dieOfOvercrowding = new CellRuleDieOfOvercrowding();
+		CellRule dieOfOvercrowding = new CellRuleDieOfOvercrowding();
 
 		if (dieOfOvercrowding.apply(cellVisited)) {
 			cells.killCell(cell);
@@ -52,10 +53,16 @@ public class CellRuleApplier {
 	}
 
 	public void applyDeadCellRules() {
-		CellRuleBornCellFromPopulation borneCellFromPopulationRule = new CellRuleBornCellFromPopulation();
+		CellRule borneCellFromPopulationRule = new CellRuleBornCellFromPopulation();
 		if (borneCellFromPopulationRule.apply(cellVisited)) {
 			cells.createCell(cell);
 		}
+	}
+
+	public void applyRules() {
+		Visitors visitors = cells.visitNeighbours();
+		visitors.applyRules(this);
+
 	}
 
 }

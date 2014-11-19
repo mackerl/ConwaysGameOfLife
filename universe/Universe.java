@@ -16,6 +16,20 @@ import seed.SeedGenerator;
 public class Universe extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	private int refreshRate = 100;
+	private final int DEFAULT_SIZE = 1000;
+
+	public void setREFRESH_RATE(int rEFRESH_RATE) {
+		refreshRate = rEFRESH_RATE;
+	}
+
+	private int iterations = 0;
+
+	private final Cells cells = new Cells();
+	private final GameOfLifeGui gameOfLifeGui = new GameOfLifeGui(cells);
+	private final Timer drawTimer = new Timer(refreshRate, this);
+
+	private List<SeedGenerator> seedGenerators = new ArrayList<SeedGenerator>();
 
 	public Universe() {
 		super();
@@ -28,7 +42,7 @@ public class Universe extends JFrame implements ActionListener {
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		super.setLocationByPlatform(true);
 		super.setVisible(true);
-		super.setSize(1000, 1000);
+		super.setSize(DEFAULT_SIZE, DEFAULT_SIZE);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -38,14 +52,6 @@ public class Universe extends JFrame implements ActionListener {
 			}
 		});
 	}
-
-	private int iterations = 0;
-
-	private final Cells cells = new Cells();
-	private final GameOfLifeGui gameOfLifeGui = new GameOfLifeGui(cells);
-	private final Timer drawTimer = new Timer(100, this);
-
-	private List<SeedGenerator> seedGenerators = new ArrayList<SeedGenerator>();
 
 	public void addSeedGenerator(SeedGenerator seedGenerator) {
 		seedGenerators.add(seedGenerator);
@@ -69,9 +75,8 @@ public class Universe extends JFrame implements ActionListener {
 	}
 
 	private void tick() {
-		Visitors visitors = cells.visitNeighbours();
 		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
-		visitors.applyRules(cellRuleApplier);
+		cellRuleApplier.applyRules();
 		++iterations;
 	}
 

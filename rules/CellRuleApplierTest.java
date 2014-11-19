@@ -12,7 +12,7 @@ import universe.Visitors;
 public class CellRuleApplierTest {
 
 	@Test
-	public void testKillTwoCells() {
+	public void killTwoCells() {
 		Cell A = new Cell(1, 1);
 		Cell B = new Cell(1, 2);
 
@@ -24,7 +24,24 @@ public class CellRuleApplierTest {
 
 		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
 
-		visitors.applyRules(cellRuleApplier);
+		cellRuleApplier.applyRules();
+
+		assertTrue(cells.isEmpty());
+	}
+
+	@Test
+	public void killSingleCell() {
+		Cell A = new Cell(1, 1);
+
+		Cells cells = new Cells();
+		cells.createCell(A);
+		Visitors visitors = cells.visitNeighbours();
+
+		assertEquals(9, visitors.size());
+
+		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
+
+		cellRuleApplier.applyRules();
 
 		assertTrue(cells.isEmpty());
 	}

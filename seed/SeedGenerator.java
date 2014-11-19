@@ -18,7 +18,6 @@ public abstract class SeedGenerator {
 	SeedGenerator() {
 		xoff = rand.nextInt(Integer.MAX_VALUE) % 100 + 1;
 		yoff = rand.nextInt(Integer.MAX_VALUE) % 100 + 1;
-		System.out.println("offs: " + xoff + " , " + yoff);
 	}
 
 	public final List<Cell> generate() {

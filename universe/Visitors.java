@@ -1,6 +1,7 @@
 package universe;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -15,10 +16,14 @@ public class Visitors {
 			Visited visited = visitorMap.get(cell);
 			visited.visit();
 		} else {
-			Visited visited = new Visited();
-			visited.visit();
-			visitorMap.put(cell, visited);
+			createVisited(cell);
 		}
+	}
+
+	private void createVisited(Cell cell) {
+		Visited visited = new Visited();
+		visited.visit();
+		visitorMap.put(cell, visited);
 	}
 
 	void visit(List<Cell> cells) {
@@ -50,5 +55,14 @@ public class Visitors {
 
 	public void visit(CellNeighbours cellNeighbours) {
 		visit(cellNeighbours.getNeighbours());
+	}
+
+	public void insertMissingCells(HashSet<Cell> cells) {
+
+		for (Cell cell : cells) {
+			if (!visitorMap.containsKey(cell)) {
+				createVisited(cell);
+			}
+		}
 	}
 }

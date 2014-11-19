@@ -67,6 +67,7 @@ public class Cells {
 			CellNeighbours cellNeighbours = CellNeighbours.create(cell);
 			visitors.visit(cellNeighbours);
 		}
+		visitors.insertMissingCells(cells);
 
 		return visitors;
 	}
