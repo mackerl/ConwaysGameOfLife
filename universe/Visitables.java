@@ -1,6 +1,6 @@
 package universe;
 
-public class Visited {
+public class Visitables {
 
 	private int amountVisitors = 0;
 

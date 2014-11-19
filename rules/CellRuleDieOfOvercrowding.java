@@ -1,12 +1,12 @@
 package rules;
 
-import universe.Visited;
+import universe.Visitables;
 
 public class CellRuleDieOfOvercrowding implements CellRule {
 	private final int limit = 3;
 
 	@Override
-	public boolean apply(Visited cellVisited) {
+	public boolean apply(Visitables cellVisited) {
 		if (cellVisited.visits() > limit) {
 			return true;
 		}

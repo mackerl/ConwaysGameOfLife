@@ -16,7 +16,7 @@ public class VisitorsTest {
 
 		assertTrue(visitors.containsKey(cell));
 
-		Visited visited = visitors.get(cell);
+		Visitables visited = visitors.get(cell);
 
 		assertEquals(1, visited.visits());
 	}
@@ -32,7 +32,7 @@ public class VisitorsTest {
 
 		for (Cell cell1 : cellNeighbours.getNeighbours()) {
 			assertTrue(visitors.containsKey(cell1));
-			Visited visited = visitors.get(cell1);
+			Visitables visited = visitors.get(cell1);
 
 			assertEquals(1, visited.visits());
 		}

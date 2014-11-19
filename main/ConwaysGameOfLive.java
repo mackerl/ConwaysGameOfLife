@@ -1,9 +1,11 @@
-package universe;
+package main;
+
 
 import java.util.List;
 
 import seed.SeedFactory;
 import seed.SeedGenerator;
+import universe.Universe;
 
 public class ConwaysGameOfLive {
 

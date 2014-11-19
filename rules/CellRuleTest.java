@@ -6,13 +6,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import universe.Visited;
+import universe.Visitables;
 
 public class CellRuleTest {
 
 	@Test
 	public void BornCellFromThreeNeighbours() {
-		Visited cellVisited = new Visited();
+		Visitables cellVisited = new Visitables();
 		int expectedVisitors = 3;
 
 		cellVisited.visit(expectedVisitors);
@@ -28,7 +28,7 @@ public class CellRuleTest {
 
 	@Test
 	public void KillCellWithLessThanTwoNeighbours() {
-		Visited cellVisited = new Visited();
+		Visitables cellVisited = new Visitables();
 		int expectedVisitors = 0;
 
 		cellVisited.visit(expectedVisitors);
@@ -48,7 +48,7 @@ public class CellRuleTest {
 
 	@Test
 	public void KillCellWithMoreThanTwoNeighbours() {
-		Visited cellVisited = new Visited();
+		Visitables cellVisited = new Visitables();
 		int expectedVisitors = 4;
 
 		CellRuleDieOfOvercrowding cellRuleDieOfOvercrowding = new CellRuleDieOfOvercrowding();
@@ -65,7 +65,7 @@ public class CellRuleTest {
 
 	@Test
 	public void DoNotCreateCellWithOutThreeNeighbours() {
-		Visited cellVisited = new Visited();
+		Visitables cellVisited = new Visitables();
 		int expectedVisitors = 2;
 
 		cellVisited.visit(expectedVisitors);

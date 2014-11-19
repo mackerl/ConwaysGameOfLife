@@ -19,15 +19,10 @@ public class Universe extends JFrame implements ActionListener {
 	private int refreshRate = 100;
 	private final int DEFAULT_SIZE = 1000;
 
-	public void setREFRESH_RATE(int rEFRESH_RATE) {
-		refreshRate = rEFRESH_RATE;
-	}
-
 	private int iterations = 0;
 
 	private final Cells cells = new Cells();
 	private final GameOfLifeGui gameOfLifeGui = new GameOfLifeGui(cells);
-	private final Timer drawTimer = new Timer(refreshRate, this);
 
 	private List<SeedGenerator> seedGenerators = new ArrayList<SeedGenerator>();
 
@@ -53,8 +48,35 @@ public class Universe extends JFrame implements ActionListener {
 		});
 	}
 
-	public void addSeedGenerator(SeedGenerator seedGenerator) {
-		seedGenerators.add(seedGenerator);
+	public void start() {
+		System.out.println("<<<<<<<<<<<<< Starting my universe <<<<<<<<<<<<<");
+		spraySeed();
+		Timer drawTimer = new Timer(refreshRate, this);
+		drawTimer.start();
+
+	}
+
+	private void spraySeed() {
+		for (SeedGenerator seedGenerator : seedGenerators) {
+			List<Cell> seed = seedGenerator.generate();
+			cells.createCell(seed);
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		tick();
+	}
+
+	private void tick() {
+		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
+		cellRuleApplier.applyRules();
+		gameOfLifeGui.repaint();
+		++iterations;
+	}
+
+	public void setREFRESH_RATE(int rEFRESH_RATE) {
+		refreshRate = rEFRESH_RATE;
 	}
 
 	public void addSeedGenerator(List<SeedGenerator> seedGenerators) {
@@ -63,27 +85,7 @@ public class Universe extends JFrame implements ActionListener {
 		}
 	}
 
-	public void start() {
-		System.out.println("<<<<<<<<<<<<< Starting my universe <<<<<<<<<<<<<");
-		for (SeedGenerator seedGenerator : seedGenerators) {
-			List<Cell> seed = seedGenerator.generate();
-			cells.createCell(seed);
-		}
-
-		drawTimer.start();
-
+	public void addSeedGenerator(SeedGenerator seedGenerator) {
+		seedGenerators.add(seedGenerator);
 	}
-
-	private void tick() {
-		CellRuleApplier cellRuleApplier = new CellRuleApplier(cells);
-		cellRuleApplier.applyRules();
-		++iterations;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		tick();
-		gameOfLifeGui.repaint();
-	}
-
 }

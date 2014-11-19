@@ -2,7 +2,7 @@ package rules;
 
 import universe.Cell;
 import universe.Cells;
-import universe.Visited;
+import universe.Visitables;
 import universe.Visitors;
 
 public class CellRuleApplier {
@@ -14,13 +14,13 @@ public class CellRuleApplier {
 	}
 
 	private Cell cell;
-	private Visited cellVisited;
+	private Visitables cellVisited;
 
 	public void setCell(Cell cell) {
 		this.cell = cell;
 	}
 
-	public void setCellVisited(Visited cellVisited) {
+	public void setCellVisited(Visitables cellVisited) {
 		this.cellVisited = cellVisited;
 	}
 

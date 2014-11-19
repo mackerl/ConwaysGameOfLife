@@ -9,11 +9,11 @@ import rules.CellRuleApplier;
 
 public class Visitors {
 
-	private Map<Cell, Visited> visitorMap = new ConcurrentHashMap<Cell, Visited>();
+	private Map<Cell, Visitables> visitorMap = new ConcurrentHashMap<Cell, Visitables>();
 
 	public void visit(Cell cell) {
 		if (visitorMap.containsKey(cell)) {
-			Visited visited = visitorMap.get(cell);
+			Visitables visited = visitorMap.get(cell);
 			visited.visit();
 		} else {
 			createVisited(cell);
@@ -21,7 +21,7 @@ public class Visitors {
 	}
 
 	private void createVisited(Cell cell) {
-		Visited visited = new Visited();
+		Visitables visited = new Visitables();
 		visited.visit();
 		visitorMap.put(cell, visited);
 	}
@@ -34,14 +34,14 @@ public class Visitors {
 
 	public void applyRules(CellRuleApplier cellRuleApplier) {
 
-		for (Map.Entry<Cell, Visited> entry : visitorMap.entrySet()) {
+		for (Map.Entry<Cell, Visitables> entry : visitorMap.entrySet()) {
 			cellRuleApplier.setCell(entry.getKey());
 			cellRuleApplier.setCellVisited(entry.getValue());
 			cellRuleApplier.applyRulesOnCell();
 		}
 	}
 
-	public Visited get(Cell cell) {
+	public Visitables get(Cell cell) {
 		return visitorMap.get(cell);
 	}
 

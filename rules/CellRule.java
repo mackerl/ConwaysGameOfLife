@@ -1,9 +1,9 @@
 package rules;
 
-import universe.Visited;
+import universe.Visitables;
 
 public interface CellRule {
 
-	public boolean apply(Visited cellVisited);
+	public boolean apply(Visitables cellVisited);
 
 }

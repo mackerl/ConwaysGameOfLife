@@ -55,7 +55,7 @@ public class CellsTest {
 
 		for (Cell neighbour : neighbours) {
 			assertTrue(visitors.containsKey(neighbour));
-			Visited visited = visitors.get(neighbour);
+			Visitables visited = visitors.get(neighbour);
 			assertEquals(1, visited.visits());
 		}
 
