@@ -1,15 +1,15 @@
 package universe;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import rules.CellRuleApplier;
 
 public class Visitors {
 
-	private Map<Cell, Visited> visitorMap = new HashMap<Cell, Visited>();
+	private Map<Cell, Visited> visitorMap = new ConcurrentHashMap<Cell, Visited>();
 
 	public void visit(Cell cell) {
 		if (visitorMap.containsKey(cell)) {
@@ -57,7 +57,7 @@ public class Visitors {
 		visit(cellNeighbours.getNeighbours());
 	}
 
-	public void insertMissingCells(HashSet<Cell> cells) {
+	public void visitCellsWithoutNeighbours(Set<Cell> cells) {
 
 		for (Cell cell : cells) {
 			if (!visitorMap.containsKey(cell)) {

@@ -1,11 +1,14 @@
 package universe;
 
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Cells {
 
-	private HashSet<Cell> cells = new HashSet<Cell>();
+	private Set<Cell> cells = Collections
+			.newSetFromMap(new ConcurrentHashMap<Cell, Boolean>());
 
 	public int size() {
 		return cells.size();
@@ -67,7 +70,7 @@ public class Cells {
 			CellNeighbours cellNeighbours = CellNeighbours.create(cell);
 			visitors.visit(cellNeighbours);
 		}
-		visitors.insertMissingCells(cells);
+		visitors.visitCellsWithoutNeighbours(cells);
 
 		return visitors;
 	}
