@@ -46,6 +46,7 @@ public class Universe extends JFrame implements ActionListener {
 						+ iterations + " iterations");
 			}
 		});
+		add(new StartButton(this));
 	}
 
 	public void start() {

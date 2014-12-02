@@ -19,14 +19,13 @@ public class LifFileReader {
 
 			String line;
 			while ((line = bufferdReader.readLine()) != null) {
-				if (line.startsWith("#")) {
-					break;
-				}
-				String[] lineVariables = line.split(" ");
-				if (lineVariables.length == 2) {
-					int x = Integer.parseInt(lineVariables[0]);
-					int y = Integer.parseInt(lineVariables[1]);
-					lifFileSeedGenerator.add(x, y);
+				if (!line.startsWith("#")) {
+					String[] lineVariables = line.split(" ");
+					if (lineVariables.length == 2) {
+						int x = Integer.parseInt(lineVariables[0]);
+						int y = Integer.parseInt(lineVariables[1]);
+						lifFileSeedGenerator.add(x, y);
+					}
 				}
 			}
 			bufferdReader.close();

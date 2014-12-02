@@ -53,8 +53,12 @@ public class Cells {
 	}
 
 	Cell getMax() {
-		Cell maxCell = new Cell();
+		Cell maxCell = null;
 		for (Cell cell : aliveCells) {
+			if (maxCell == null) {
+				maxCell = cell;
+				continue;
+			}
 			if (cell.x > maxCell.x) {
 				maxCell.x = cell.x;
 			}
@@ -66,8 +70,12 @@ public class Cells {
 	}
 
 	Cell getMin() {
-		Cell minCell = new Cell();
+		Cell minCell = null;
 		for (Cell cell : aliveCells) {
+			if (minCell == null) {
+				minCell = cell;
+				continue;
+			}
 			if (cell.x < minCell.x) {
 				minCell.x = cell.x;
 			}

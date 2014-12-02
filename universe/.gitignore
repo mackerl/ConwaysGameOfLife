@@ -36,3 +36,7 @@
 /GameOfLifeGui.class
 /Universe$1.class
 /Visitables.class
+/StartButton.class
+/StartButton$1.class
+/StartButton$startListener.class
+/StartButton$StartListener.class

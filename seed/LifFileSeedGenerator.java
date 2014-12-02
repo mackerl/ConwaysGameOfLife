@@ -6,7 +6,7 @@ public class LifFileSeedGenerator extends SeedGenerator {
 
 	private final File file;
 
-	LifFileSeedGenerator(File file) {
+	public LifFileSeedGenerator(File file) {
 		this.file = file;
 	}
 
